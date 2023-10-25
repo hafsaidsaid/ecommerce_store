@@ -1,0 +1,250 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.sec-store h1 {
+    padding-top: 50px;
+    margin-bottom: 70px;
+    color: #004953;
+    text-align: center;
+    font-size: 40px;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    height: 300px;
+    max-width: 1000px;
+    justify-content: space-between;
+    margin: auto;
+    padding: 0px 20px;
+    gap: 20px;
+    position: relative;
+}
+
+.card {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    text-align: center;
+}
+
+@media (min-width:768px) {
+    .card {
+        text-align: left;
+        width: calc((100% / 3) - (3*20px) );
+    }
+}
+
+@media (min-width:992px) {
+    .card {
+        width: calc((100% / 4) - (3*20px) );
+    }
+}
+
+.cards-container .card img {
+    width: 100%;
+    height: 230px;
+    object-fit: contain;
+}
+
+.cards-container .card h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+    color: #004953;
+}
+
+.cards-container .card p {
+    font-size: 13px;
+    color: #70757a;
+    line-height: 1.5;
+}
+
+.cards-container .card div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.cards-container .card div button.btnBuy {
+    background-color: #2196F3;
+    outline: 0;
+    border: 0;
+    border-radius: 5px;
+    padding: 5px 8px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3 linear;
+}
+
+.cards-container .card div h5.price {
+    color: crimson;
+}
+
+/* style showPurchases button */
+.cards-container button.btnShow {
+    all: unset;
+    background-color: teal;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    font-size: 15px;
+    position: absolute;
+    top: -60px;
+    right: 20px;
+    opacity: 0;
+    cursor: pointer;
+    transition: background-color 0.3s linear;
+}
+
+.cards-container button.btnShow:hover {
+    background-color: rgb(4, 77, 77);
+}
+
+.cards-container button.btnShow.activeShow {
+    opacity: 1;
+}
+
+
+.cards-container .card.bought button.btnBuy {
+    background-color: #607D8B;
+}
+
+/* Modal */
+.sec-store .modalPur {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    min-height: 100%;
+    z-index: 30;
+    overflow: hidden;
+    background-color: #004953;
+    opacity: 0;
+    width: 0;
+    transition: width 0.3s linear;
+}
+
+.sec-store .modalPur i {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s linear;
+}
+
+.sec-store .modalPur div.boxes-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 700px;
+    max-width: 90%;
+    margin: 100px auto;
+    gap: 30px;
+}
+
+.sec-store .modalPur div.boxes-container .box {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 5px;
+    gap: 20px;
+}
+
+.sec-store .modalPur div.boxes-container .box img {
+    width: 60px;
+    object-fit: cover;
+}
+
+@media (max-width: 510px) {
+    .sec-store .modalPur div.boxes-container .box img {
+        width: 40px;
+    }
+}
+
+.sec-store .modalPur div.boxes-container .box div {
+    display: flex;
+    align-items: center;
+}
+
+.sec-store .modalPur div.boxes-container .box div p {
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.sec-store .modalPur div.boxes-container .box div input {
+    width: 40px;
+    margin-left: 10px;
+    padding: 5px 0px;
+    border: 1px solid;
+    border-color: #2196F3;
+    outline: 0;
+    text-align: center;
+}
+
+.sec-store .modalPur div.boxes-container .box h5.price {
+    color: crimson;
+}
+
+.sec-store .modalPur div.boxes-container .box button.btnDelete {
+    all: unset;
+    background-color: #607D8B;
+    color: #ffffff;
+    font-size: 15px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s linear;
+}
+
+.sec-store .modalPur div.boxes-container .box button.btnDelete:hover {
+    background-color: #34434b;
+}
+
+
+/* purchase */
+.modalPur >div:last-child {
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.modalPur >div:last-child button.purchaseBtn {
+    all: unset;
+    background-color: #F44336;
+    color: #ffffff;
+    font-size: 15px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s linear;
+}
+
+.modalPur >div:last-child button.purchaseBtn:hover {
+    background-color: #d12b20;
+}
+
+
+.modalPur >div:last-child div p {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 2;
+}
+
+.sec-store .modalPur.showModal {
+    opacity: 1;
+    width: 100%;
+}
